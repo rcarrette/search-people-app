@@ -1,5 +1,5 @@
-Simple app for personal technical training purposes.
+Simple project for personal technical training purposes.
 
 api: Node/TS/GraphQL/Mongo
 
-client: Angular/TS/Karma/Webpack
+clients: Angular/React/Vue/TS/Karma/Webpack
