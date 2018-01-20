@@ -18,7 +18,7 @@ class Server {
             })
         })
 
-        this.express.use('/api', router)
+        this.express.use('/', router)
     }
 }
 
