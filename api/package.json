@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "dev": "tsc --watch & nodemon dist"
+    "build-run": "tsc && node dist/index.js",
+    "dev": "nodemon -e ts --exec \"npm run build-run\""
   },
   "keywords": [],
   "author": "rcarrette",
