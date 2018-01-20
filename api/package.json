@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc"
+    "dev": "tsc --watch & nodemon dist"
   },
-  "author": "",
+  "keywords": [],
+  "author": "rcarrette",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^9.3.0",
-    "express": "^4.15.3",
+    "express": "4.15.3",
     "nodemon": "1.11.0"
   },
   "devDependencies": {
     "@types/node": "^9.3.0",
-    "tsc": "^1.20150623.0"
+    "tsc": "1.20150623.0",
+    "typescript": "^2.6.2"
   }
 }
