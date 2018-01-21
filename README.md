@@ -7,6 +7,7 @@ clients: Angular/React/Vue/TS/Karma/Webpack
 **Setup dev environment**
 
 ```
+npm install
 npm run dev
 ```
 
