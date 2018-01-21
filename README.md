@@ -2,7 +2,7 @@
 
 api: Node/TS/GraphQL/Mongo/Mocha
 
-clients: Angular/React/Vue/TS/Karma/Webpack
+clients: Angular/React/Vue/TS/Karma/Webpack/Android/Kotlin
 
 **Setup dev environment**
 
