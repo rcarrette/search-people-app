@@ -7,10 +7,12 @@
         "sourceMap": true
     },
     "files": [
-        "./node_modules/@types/node/index.d.ts"
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/@types/mocha/index.d.ts"
     ],
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./tests/**/*"
     ],
     "exclude": [
         "node_modules"
