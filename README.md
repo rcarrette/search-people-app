@@ -8,7 +8,7 @@ clients: Angular/React/Vue/TS/Karma/Webpack/Android/Kotlin
 
 Assuming MongoDB is installed on your machine, just create a new database named ``` search-people-db ```
 
-**Setup dev environment**
+**Dev environment setup**
 
 ```
 npm install
