@@ -65,3 +65,6 @@ dist
 
 # MongoDB data files
 mongodb
+
+# Visual Studio Code debug files
+.vscode/
