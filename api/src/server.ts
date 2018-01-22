@@ -1,4 +1,5 @@
 import * as express from 'express'
+import mongoose from './mongoose/mongoose'
 
 class Server {
     public express
@@ -12,13 +13,22 @@ class Server {
     private buildRoutes(): void {
         const router = express.Router()
 
-        router.get('/api', (req, res) => {
+        router.get('/', (req, res) => {
             res.json({
-                message: 'Hello world :)'
+                message: 'search-people-app api'
             })
         })
 
-        this.express.use('/', router)
+        //router.get for easy testing. TODO must be changed to post + handle result + add mocha test
+        router.get('/add', (req, res) => {
+            mongoose.addPeople()
+
+            // let result = mongoose.addPeople()
+
+            // let x = result
+        })
+
+        this.express.use('/api', router)
     }
 }
 
