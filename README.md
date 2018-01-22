@@ -4,6 +4,10 @@ api: Node/TS/GraphQL/Mongo/Mocha
 
 clients: Angular/React/Vue/TS/Karma/Webpack/Android/Kotlin
 
+**MongoDB setup**
+
+Assuming MongoDB is installed on your machine, just create a new database named ``` search-people-db ```
+
 **Setup dev environment**
 
 ```
