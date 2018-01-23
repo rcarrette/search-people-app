@@ -1,7 +1,7 @@
 import server from '../src/server'
 import * as httpAssert from 'supertest'
 
-const expectedString = 'Hello world :)'
+const expectedString = 'search-people-app api'
 
 describe('/api http call', () => {
     it(`should return '${expectedString}'`, (done) => {
