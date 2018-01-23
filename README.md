@@ -1,10 +1,14 @@
 **Simple project for personal technical training purposes.**
 
-Node/TS/GraphQL/Mongo/Mocha
+* Node
+* TypeScript
+* GraphQL
+* MongoDB
+* Mocha
 
 **MongoDB setup**
 
-Assuming MongoDB is installed on your machine, just create a new database named ``` search-people-db ``` and ```api\mongodb\data``` folder 
+Assuming MongoDB is installed on your machine, just create a new database named ``` search-people-db ``` and ```api\mongodb\data``` folder.
 
 **Dev environment setup**
 
