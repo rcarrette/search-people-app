@@ -13,19 +13,45 @@ class Server {
     private buildRoutes(): void {
         const router = express.Router()
 
-        router.get('/', (req, res) => {
-            res.json({
-                message: 'search-people-app api'
-            })
+        router.get('/', async (req: express.Request, res: express.Response) => {
+            let people = await mongoose.getPeopleAsync(),
+                personsCount: Number = people.length
+
+            res.json(personsCount > 0 ?
+                people :
+                'no persons found'
+            )
         })
 
-        //router.get for easy testing. TODO must be changed to post + handle result + add mocha test
-        router.get('/add', (req, res) => {
-            mongoose.addPeople()
+        //router.get for easy testing. TODO add person parameter + must be changed to post + error handling
+        router.get('/add', async (req: express.Request, res: express.Response) => {
+            let result = await mongoose.addPeopleAsync()
 
-            // let result = mongoose.addPeople()
+            res.json(result)
+        })
 
-            // let x = result
+        //router.get for easy testing. TODO add person parameter + must be changed to post + error handling
+        router.get('/update', async (req: express.Request, res: express.Response) => {
+            let result = await mongoose.updatePeopleAsync(),
+                message = result &&
+                    `person with id '${result._id}' updated` ||
+                    'no persons updated'
+
+            res.json(message)
+        })
+
+        //router.get for easy testing. TODO add person parameter + must be changed to post + error handling
+        router.get('/delete', async (req: express.Request, res: express.Response) => {
+            let result = await mongoose.deletePeopleAsync()
+
+            res.json(`${result.n} person(s) deleted`)
+        })
+
+        //router.get for easy testing. TODO must be changed to post + error handling
+        router.get('/clear', async (req: express.Request, res: express.Response) => {
+            let result = await mongoose.clearPeopleAsync()
+
+            res.json(`${result.n} person(s) deleted`)
         })
 
         this.express.use('/api/people', router)

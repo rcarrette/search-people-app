@@ -3,7 +3,7 @@ import People from './models/people'
 
 class Mongoose {
     private readonly CONNECTION_STRING: String = 'mongodb://localhost:27017/search-people-db'
-    private _db
+    private _db: mongoose.connection
 
     constructor() {
         this._db = mongoose.connection
@@ -21,14 +21,36 @@ class Mongoose {
         })
     }
 
-    public addPeople(): void {
+    public async getPeopleAsync(): Promise<any> {
+        return People.find({})
+            .exec()
+    }
+
+    public async addPeopleAsync(): Promise<any> {
         let people = new People({
             firstName: 'Romain',
             lastName: 'Carrette',
             age: 26
         })
 
-        people.save()
+        return people.save()
+    }
+
+    public async updatePeopleAsync(): Promise<any> {
+        return People.findOneAndUpdate(
+            { age: 26 },
+            { age: 27 })
+            .exec()
+    }
+
+    public async deletePeopleAsync(): Promise<any> {
+        return People.remove({ age: 26 })
+            .exec()
+    }
+
+    public async clearPeopleAsync(): Promise<any> {
+        return People.remove({})
+            .exec()
     }
 }
 
