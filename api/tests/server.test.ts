@@ -3,10 +3,10 @@ import * as httpAssert from 'supertest'
 
 const expectedString = 'search-people-app api'
 
-describe('/api http call', () => {
+describe('/api/people http call', () => {
     it(`should return '${expectedString}'`, (done) => {
         httpAssert(server)
-            .get('/api')
+            .get('/api/people')
             .expect('Content-Type', /json/)
             .expect(200, {
                 message: expectedString

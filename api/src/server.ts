@@ -28,7 +28,7 @@ class Server {
             // let x = result
         })
 
-        this.express.use('/api', router)
+        this.express.use('/api/people', router)
     }
 }
 
