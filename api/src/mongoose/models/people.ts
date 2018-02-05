@@ -1,25 +1,18 @@
 import * as mongoose from 'mongoose'
 
 class People {
-    private _schema: mongoose.Schema
-
-    public model
+    public model: mongoose.Model
 
     constructor() {
-        this._schema = this.getSchema()
-
-        this.model = mongoose.model('people', this._schema)
+        this.model = mongoose.model('people', this.getSchema())
     }
 
     private getSchema(): mongoose.Schema {
-        if (this._schema == null)
-            this._schema = new mongoose.Schema({
-                firstName: String,
-                lastName: String,
-                age: Number
-            }, { collection: 'people' })
-
-        return this._schema
+        return new mongoose.Schema({
+            firstName: String,
+            lastName: String,
+            age: Number
+        }, { collection: 'people' })
     }
 }
 
