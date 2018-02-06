@@ -14,7 +14,7 @@ class People extends Schema {
         return new GraphQLObjectType({
             name: 'people',
             description: 'people',
-            fields: () => ({
+            fields: {
                 firstName: {
                     type: GraphQLString,
                     description: 'person\'s first name'
@@ -27,22 +27,30 @@ class People extends Schema {
                     type: GraphQLInt,
                     description: 'person\'s age'
                 }
-            })
+            }
         })
     }
-
     getSchema(): GraphQLSchema {
         return new GraphQLSchema({
             query: new GraphQLObjectType({
-                name: 'GetPeopleList',
+                name: 'peopleQuery',
                 fields: {
                     people: {
                         type: new GraphQLList(this.getType()),
-                        args: {},
-                        resolve: async (root, { params }, source, fieldASTs) => {
+                        args: {
+                            lastName: {
+                                name: 'lastName',
+                                type: GraphQLString
+                            },
+                            age: {
+                                name: 'age',
+                                type: GraphQLInt
+                            }
+                        },
+                        resolve: async (root, args, source, fieldASTs) => {
                             let projections = this.getProjections(fieldASTs)
 
-                            return await PeopleModel.find({ params }, projections)  //TODO error handling
+                            return await PeopleModel.find(args, projections)  //TODO error handling
                         }
                     }
                 }
