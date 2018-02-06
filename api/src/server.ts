@@ -1,5 +1,7 @@
 import * as express from 'express'
+import * as graphqlHTTP from 'express-graphql'
 import mongoose from './mongoose/mongoose'
+import PeopleGraphQLSchema from './graphql/schemas/people'
 
 class Server {
     public express
@@ -12,6 +14,10 @@ class Server {
 
     private buildRoutes(): void {
         const router = express.Router()
+
+        //#region MongoDB routes
+
+        this.express.use('/api/people', router)  //base prefix
 
         router.get('/', async (req: express.Request, res: express.Response) => {
             let people = await mongoose.getPeopleAsync(),
@@ -54,7 +60,16 @@ class Server {
             res.json(`${result.n} person(s) deleted`)
         })
 
-        this.express.use('/api/people', router)
+        //#endregion
+
+        //#region GraphQL routes
+
+        this.express.use('/graphql', graphqlHTTP({
+            schema: PeopleGraphQLSchema,
+            graphiql: false  //TODO set value based on env variable
+        }))
+
+        //#endregion
     }
 }
 
