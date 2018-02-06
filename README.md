@@ -52,6 +52,18 @@ or
     }
 }
 ```
+or
+```
+{
+    mutation {
+        add(firstName: "John", lastName: "Doe", age: 37) {
+            firstName,
+            lastName,
+            age
+        }
+    }
+}
+```
 
 * Using HTTP request
 ```
