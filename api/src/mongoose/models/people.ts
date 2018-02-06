@@ -1,18 +1,19 @@
 import * as mongoose from 'mongoose'
+import { Model } from './model'
 
-class People {
-    public model: mongoose.Model
+const COLLECTION_NAME: String = 'people'
 
+class People extends Model {
     constructor() {
-        this.model = mongoose.model('people', this.getSchema())
+        super(COLLECTION_NAME)
     }
 
-    private getSchema(): mongoose.Schema {
+    getSchema(): mongoose.Schema {
         return new mongoose.Schema({
             firstName: String,
             lastName: String,
             age: Number
-        }, { collection: 'people' })
+        }, { collection: COLLECTION_NAME })
     }
 }
 
