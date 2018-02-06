@@ -34,7 +34,6 @@ npm run tests
     }
 }
 ```
-or
 ```
 {
     people(age: 26) {
@@ -44,7 +43,6 @@ or
     }
 }
 ```
-or
 ```
 {
     people {
@@ -52,7 +50,6 @@ or
     }
 }
 ```
-or
 ```
 {
     mutation {
