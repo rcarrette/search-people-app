@@ -3,10 +3,11 @@ import {
     GraphQLSchema,
     GraphQLString,
     GraphQLInt,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } from 'graphql/type'
 
-import PeopleModel from '../../mongoose/models/people'
+import mongoose from '../../mongoose/mongoose'
 import { Schema } from './schema'
 
 class People extends Schema {
@@ -31,13 +32,19 @@ class People extends Schema {
         })
     }
     getSchema(): GraphQLSchema {
+        let peopleType = this.getType()
+
         return new GraphQLSchema({
             query: new GraphQLObjectType({
                 name: 'peopleQuery',
                 fields: {
                     people: {
-                        type: new GraphQLList(this.getType()),
+                        type: new GraphQLList(peopleType),
                         args: {
+                            firstName: {
+                                name: 'firstName',
+                                type: GraphQLString
+                            },
                             lastName: {
                                 name: 'lastName',
                                 type: GraphQLString
@@ -50,9 +57,35 @@ class People extends Schema {
                         resolve: async (root, args, source, fieldASTs) => {
                             let projections = this.getProjections(fieldASTs)
 
-                            return await PeopleModel.find(args, projections)  //TODO error handling
+                            return await mongoose.getPeopleAsync(args, projections)
                         }
                     }
+                }
+            }),
+            mutation: new GraphQLObjectType({
+                name: 'peopleMutation',
+                fields: {
+                    add: {
+                        type: peopleType,
+                        args: {
+                            firstName: {
+                                name: 'firstName',
+                                type: new GraphQLNonNull(GraphQLString)
+                            },
+                            lastName: {
+                                name: 'lastName',
+                                type: new GraphQLNonNull(GraphQLString)
+                            },
+                            age: {
+                                name: 'age',
+                                type: new GraphQLNonNull(GraphQLInt)
+                            }
+                        },
+                        resolve: async (root, args, source, fieldASTs) => {
+                            return await mongoose.addPeopleAsync(args)
+                        }
+                    },
+                    //TODO add other mutations here (update, delete, etc.)
                 }
             })
         })
