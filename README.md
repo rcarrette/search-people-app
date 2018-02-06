@@ -23,6 +23,41 @@ npm run dev
 npm run tests
 ```
 
+**GraphQL sample queries and mutations**
+
+* Using GraphiQL
+```
+{
+    people(lastName: "Carrette") {
+        firstName
+        age
+    }
+}
+```
+or
+```
+{
+    people(age: 26) {
+        lastName
+        firstName
+        age
+    }
+}
+```
+or
+```
+{
+    people {
+        lastName
+    }
+}
+```
+
+* Using HTTP request
+```
+http://localhost:3000/graphql?query={people(lastName:%20%22Carrette%22){firstName,%20age}}
+```
+
 **API clients**
 * [search-people-app-client-angular](https://github.com/rcarrette/search-people-app-client-angular)
 * [search-people-app-client-react](https://github.com/rcarrette/search-people-app-client-react)
