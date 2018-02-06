@@ -21,16 +21,16 @@ class Mongoose {
         })
     }
 
-    public async getPeopleAsync(): Promise<any> {
-        return People.find({})
+    public async getPeopleAsync(args: any, projections: any): Promise<any> {
+        return People.find(args, projections)
             .exec()
     }
 
-    public async addPeopleAsync(): Promise<any> {
+    public async addPeopleAsync(args: any): Promise<any> {
         let people = new People({
-            firstName: 'Romain',
-            lastName: 'Carrette',
-            age: 26
+            firstName: args.firstName,
+            lastName: args.lastName,
+            age: args.age
         })
 
         return people.save()
