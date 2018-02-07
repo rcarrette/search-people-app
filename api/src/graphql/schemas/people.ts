@@ -1,6 +1,7 @@
 import {
-    GraphQLObjectType,
     GraphQLSchema,
+    GraphQLObjectType,
+    GraphQLInputObjectType,
     GraphQLString,
     GraphQLInt,
     GraphQLList,
@@ -14,19 +15,15 @@ class People extends Schema {
     getType(): GraphQLObjectType {
         return new GraphQLObjectType({
             name: 'people',
-            description: 'people',
             fields: {
                 firstName: {
-                    type: GraphQLString,
-                    description: 'person\'s first name'
+                    type: GraphQLString
                 },
                 lastName: {
-                    type: GraphQLString,
-                    description: 'person\'s last name'
+                    type: GraphQLString
                 },
                 age: {
-                    type: GraphQLInt,
-                    description: 'person\'s age'
+                    type: GraphQLInt
                 }
             }
         })
@@ -83,6 +80,35 @@ class People extends Schema {
                         },
                         resolve: async (root, args) => {
                             return await mongoose.addPeopleAsync(args)
+                        }
+                    },
+                    update: {
+                        type: peopleType,
+                        args: {
+                            _id: {
+                                name: '_id',
+                                type: new GraphQLNonNull(GraphQLString)
+                            },
+                            fieldsToUpdate: {
+                                name: 'fieldsToUpdate',
+                                type: new GraphQLInputObjectType({
+                                    name: 'fieldsToUpdate',
+                                    fields: {
+                                        firstName: {
+                                            type: GraphQLString
+                                        },
+                                        lastName: {
+                                            type: new GraphQLNonNull(GraphQLString)
+                                        },
+                                        age: {
+                                            type: GraphQLInt
+                                        }
+                                    }
+                                })
+                            }
+                        },
+                        resolve: async (root, args) => {
+                            return await mongoose.updatePeopleAsync(args)
                         }
                     },
                     delete: {

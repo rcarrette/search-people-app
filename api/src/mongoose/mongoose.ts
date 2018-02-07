@@ -36,10 +36,10 @@ class Mongoose {
         return people.save()
     }
 
-    public async updatePeopleAsync(): Promise<any> {
-        return People.findOneAndUpdate(
-            { age: 26 },
-            { age: 27 })
+    public async updatePeopleAsync(args: any): Promise<any> {
+        return People.findByIdAndUpdate(
+            args._id,
+            args.fieldsToUpdate)
             .exec()
     }
 
