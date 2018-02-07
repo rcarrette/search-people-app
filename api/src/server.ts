@@ -1,6 +1,5 @@
 import * as express from 'express'
 import * as graphqlHTTP from 'express-graphql'
-import mongoose from './mongoose/mongoose'
 import PeopleGraphQLSchema from './graphql/schemas/people'
 
 class Server {
