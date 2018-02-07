@@ -8,7 +8,8 @@
 
 **MongoDB setup**
 
-Assuming MongoDB is installed on your machine, just create a new database named ``` search-people-db ``` and ```api\mongodb\data``` folder.
+Assuming MongoDB is installed on your machine, just create a new database named ``` search-people-db ``` and ``` api\mongodb\data ``` folder.
+Then, run the MongoDB agent: ``` mongod --dbpath api\mongodb\data ```
 
 **Dev environment setup**
 
