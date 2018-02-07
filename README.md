@@ -54,8 +54,8 @@ npm run tests
 ```
 mutation {
     add(firstName: "John", lastName: "Doe", age: 37) {
-        firstName,
-        lastName,
+        firstName
+        lastName
         age
     }
 }
