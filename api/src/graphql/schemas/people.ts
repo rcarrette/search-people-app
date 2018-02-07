@@ -55,6 +55,7 @@ class People extends Schema {
                             let projections = this.getProjections(fieldASTs)
 
                             return await mongoose.getPeopleAsync(args, projections)
+                                .catch(err => console.log(err))
                         }
                     }
                 }
@@ -80,6 +81,7 @@ class People extends Schema {
                         },
                         resolve: async (root, args) => {
                             return await mongoose.addPeopleAsync(args)
+                                .catch(err => console.log(err))
                         }
                     },
                     update: {
@@ -109,6 +111,7 @@ class People extends Schema {
                         },
                         resolve: async (root, args) => {
                             return await mongoose.updatePeopleAsync(args)
+                                .catch(err => console.log(err))
                         }
                     },
                     delete: {
@@ -125,6 +128,7 @@ class People extends Schema {
                         },
                         resolve: async (root, args) => {
                             return await mongoose.deletePeopleAsync(args)
+                                .catch(err => console.log(err))
                         }
                     }
                 }
