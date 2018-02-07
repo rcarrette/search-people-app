@@ -43,8 +43,8 @@ class Mongoose {
             .exec()
     }
 
-    public async deletePeopleAsync(): Promise<any> {
-        return People.remove({ age: 26 })
+    public async deletePeopleAsync(args: any): Promise<any> {
+        return People.remove(args)
             .exec()
     }
 

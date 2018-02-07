@@ -81,11 +81,26 @@ class People extends Schema {
                                 type: new GraphQLNonNull(GraphQLInt)
                             }
                         },
-                        resolve: async (root, args, source, fieldASTs) => {
+                        resolve: async (root, args) => {
                             return await mongoose.addPeopleAsync(args)
                         }
                     },
-                    //TODO add other mutations here (update, delete, etc.)
+                    delete: {
+                        type: peopleType,
+                        args: {
+                            lastName: {
+                                name: 'lastName',
+                                type: GraphQLString
+                            },
+                            age: {
+                                name: 'age',
+                                type: new GraphQLNonNull(GraphQLInt)
+                            }
+                        },
+                        resolve: async (root, args) => {
+                            return await mongoose.deletePeopleAsync(args)
+                        }
+                    }
                 }
             })
         })
