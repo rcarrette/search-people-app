@@ -21,6 +21,10 @@ class Mongoose {
         })
     }
 
+    //#region CRUD operations
+
+    //TODO promises error handling
+
     public async getPeopleAsync(args: any, projections: any): Promise<any> {
         return People.find(args, projections)
             .exec()
@@ -47,6 +51,8 @@ class Mongoose {
         return People.remove(args)
             .exec()
     }
+
+    //#endregion
 }
 
 export default new Mongoose()
