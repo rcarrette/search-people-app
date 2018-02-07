@@ -29,13 +29,6 @@ class Server {
             res.json(message)
         })
 
-        //router.get for easy testing. TODO must be changed to post + error handling
-        router.get('/clear', async (req: express.Request, res: express.Response) => {
-            let result = await mongoose.clearPeopleAsync()
-
-            res.json(`${result.n} person(s) deleted`)
-        })
-
         //#endregion
 
         //#region GraphQL routes

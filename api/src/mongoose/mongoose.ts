@@ -47,11 +47,6 @@ class Mongoose {
         return People.remove(args)
             .exec()
     }
-
-    public async clearPeopleAsync(): Promise<any> {
-        return People.remove({})
-            .exec()
-    }
 }
 
 export default new Mongoose()
