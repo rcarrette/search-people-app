@@ -59,6 +59,13 @@ mutation {
     }
 }
 ```
+```
+mutation {
+    delete(age: 37) {
+    lastName
+  }
+}
+```
 
 * Using HTTP request
 ```
