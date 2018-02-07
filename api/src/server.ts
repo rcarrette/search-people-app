@@ -18,7 +18,7 @@ class Server {
 
         this.express.use('/graphql', graphqlHTTP({
             schema: PeopleGraphQLSchema,
-            graphiql: true  //TODO set value based on env variable
+            graphiql: false  //TODO set value based on env variable
         }))
 
         //#endregion
