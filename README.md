@@ -61,6 +61,15 @@ mutation {
 ```
 ```
 mutation {
+  update(_id: "5a79c5c21f2f242b3c7a7196", fieldsToUpdate: {lastName: "Doe", age: 33}) {
+    firstName
+    lastName
+    age
+  }
+}
+```
+```
+mutation {
     delete(age: 37) {
     lastName
   }
