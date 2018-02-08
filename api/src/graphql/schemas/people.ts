@@ -9,9 +9,9 @@ import {
 } from 'graphql/type'
 
 import mongoose from '../../mongoose/mongoose'
-import { Schema } from './schema'
+import { ISchema } from './ISchema'
 
-class People implements Schema {
+class People implements ISchema {
     getSchema(): GraphQLSchema {
         let peopleType = this.getType()
 
