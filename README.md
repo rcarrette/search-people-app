@@ -1,10 +1,10 @@
 **Simple project for personal technical training purposes.**
 
-* Node
+* Node/Express
 * TypeScript
+* Mongoose (MongoDB)
 * GraphQL
-* MongoDB
-* Mocha
+* Mocha/Chai/Sinon
 
 **MongoDB setup**
 
