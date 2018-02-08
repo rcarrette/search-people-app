@@ -1,6 +1,6 @@
 import * as express from 'express'
 import * as graphqlHTTP from 'express-graphql'
-import PeopleGraphQLSchema from './graphql/schemas/people'
+import People from './graphql/schemas/people'
 
 class Server {
     public express
@@ -17,7 +17,7 @@ class Server {
         //#region GraphQL routes
 
         this.express.use('/graphql', graphqlHTTP({
-            schema: PeopleGraphQLSchema,
+            schema: People.getSchema(),
             graphiql: false  //TODO set value based on env variable
         }))
 

@@ -137,4 +137,4 @@ class People extends Schema {
     }
 }
 
-export default new People().getSchema()
+export default new People()
