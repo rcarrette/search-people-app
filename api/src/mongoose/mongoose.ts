@@ -9,6 +9,8 @@ class Mongoose {
         this._db = mongoose.connection
     }
 
+    //#region connection management
+
     public connect(): void {
         mongoose.connect(this.CONNECTION_STRING)
 
@@ -21,9 +23,17 @@ class Mongoose {
         })
     }
 
-    //#region CRUD operations
+    public disconnect(): void {
+        this._db.close()
 
-    //TODO promises error handling
+        this._db.on('close', (err) => {
+            console.log(`mongoose server stopped`)
+        })
+    }
+
+    //#endregion
+
+    //#region CRUD operations
 
     public async getPeopleAsync(args: any, projections: any): Promise<any> {
         return People.find(args, projections)
