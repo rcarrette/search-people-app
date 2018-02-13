@@ -2,7 +2,8 @@ import * as mongoose from 'mongoose'
 import People from './models/people'
 
 class Mongoose {
-    private readonly CONNECTION_STRING: String = 'mongodb://localhost:27017/search-people-db'
+    // private readonly CONNECTION_STRING: String = 'mongodb://localhost:27017/search-people-db'    TODO set value switch env variable
+    private readonly CONNECTION_STRING: String = 'mongodb://mongo/search-people-db'
     private _db: mongoose.connection
 
     constructor() {
